@@ -31,7 +31,7 @@ class TemperatureTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    public func bindData(
+    public func updateData(
         coordinates: String,
         location: String,
         image: String,

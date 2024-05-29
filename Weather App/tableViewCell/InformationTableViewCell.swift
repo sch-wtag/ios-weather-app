@@ -32,7 +32,7 @@ class InformationTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    public func bindData(
+    public func updateData(
         airSpeed: String,
         airPressure: String,
         humidity: String,

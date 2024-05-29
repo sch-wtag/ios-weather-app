@@ -41,14 +41,19 @@ class HomeViewController: BaseViewController,
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
+        return showTableCell(tableView: tableView, indexPath: indexPath)
+    }
+    
+    func showTableCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        switch (indexPath.row) {
+        case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: TemperatureTableViewCell.cellName, for: indexPath) as! TemperatureTableViewCell
             let result = viewModel.getResponse()
-            cell.bindData(
+            cell.updateData(
                 coordinates: "\((result?.coord?.lat ?? 0.0).rounded(toPlaces: 3)), \((result?.coord?.lon ?? 0.0).rounded(toPlaces: 3))",
                 location: "\(result?.sys?.country ?? "")",
                 image: "\(Constants.IMAGE_BASE_URL)\(result?.weather?.last?.icon ?? "")@2x.png",
@@ -59,10 +64,10 @@ class HomeViewController: BaseViewController,
                 maxTemp: "\((result?.main?.temp_max ?? 0.0).toCelciusFormat())"
             )
             return cell
-        } else if indexPath.row == 2 {
+        case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: InformationTableViewCell.cellName, for: indexPath) as! InformationTableViewCell
             let result = viewModel.getResponse()
-            cell.bindData(
+            cell.updateData(
                 airSpeed: "\(result?.wind?.speed ?? 0)",
                 airPressure: "\(result?.main?.pressure ?? 0)",
                 humidity: "\(result?.main?.humidity ?? 0)",
@@ -70,19 +75,13 @@ class HomeViewController: BaseViewController,
                 sunset: "\(convertToDateTime(timeStamp: result?.sys?.sunset ?? 0))"
             )
             return cell
-        } else {
-            let cell = UITableViewCell()
-            cell.backgroundColor = .clear
-            return cell
+        default:
+            return UITableViewCell()
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        var height = 250.0
-        if indexPath.row == 1 {
-            height = 35
-        }
-        return height
+        return UITableView.automaticDimension
     }
     
     func convertToDateTime(timeStamp: Int) -> String {
