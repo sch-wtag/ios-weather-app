@@ -97,6 +97,7 @@
 		017686E02BFDB3DF00E894BF /* Clouds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clouds.swift; sourceTree = "<group>"; };
 		017686E82BFDC70400E894BF /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		017686EB2BFDCFA200E894BF /* URLBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBuilder.swift; sourceTree = "<group>"; };
+		01CC24C52C0C792E00FC23CE /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +162,7 @@
 				012D66F22BFC536000FD302B /* Assets.xcassets */,
 				012D66F42BFC536000FD302B /* LaunchScreen.storyboard */,
 				012D66F72BFC536000FD302B /* Info.plist */,
+				01CC24C52C0C792E00FC23CE /* Config.xcconfig */,
 			);
 			path = "Weather App";
 			sourceTree = "<group>";
@@ -486,6 +488,7 @@
 /* Begin XCBuildConfiguration section */
 		012D670E2BFC536000FD302B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01CC24C52C0C792E00FC23CE /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -549,6 +552,7 @@
 		};
 		012D670F2BFC536000FD302B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01CC24C52C0C792E00FC23CE /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;

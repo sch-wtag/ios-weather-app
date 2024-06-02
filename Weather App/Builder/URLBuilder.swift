@@ -42,7 +42,7 @@ class URLBuilder {
             url += "lat=\(lat!)&lon=\(long!)"
         }
         
-        url += "&appid=\(Constants.API_KEY)"
+        url += "&appid=\(Constants.API_KEY ?? "")"
         
         if mode != Modes.json {
             url += "&mode=\(mode.rawValue)"
