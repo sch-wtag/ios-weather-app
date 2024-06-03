@@ -11,7 +11,7 @@ class HomeViewController: BaseViewController,
                           UITableViewDelegate,
                           UITableViewDataSource {
     
-    private let viewModel = HomeViewModel()
+    private let viewModel = HomeViewModel(service: WeatherNetworkService.instance)
     
     @IBOutlet weak var table: UITableView!
     
