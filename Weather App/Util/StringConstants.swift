@@ -10,4 +10,6 @@ import Foundation
 struct StringConstants {
     static let homeViewController = "HomeViewController"
     static let mainStoryBoard = "Main"
+    static let locationLatitude = "LocationLatitude"
+    static let locationLongitude = "LocationLongitude"
 }

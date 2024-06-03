@@ -15,15 +15,29 @@ class HomeViewController: BaseViewController,
     
     @IBOutlet weak var table: UITableView!
     
+    var refreshControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         table.register(TemperatureTableViewCell.nib(), forCellReuseIdentifier: TemperatureTableViewCell.cellName)
         table.register(InformationTableViewCell.nib(), forCellReuseIdentifier: InformationTableViewCell.cellName)
         
+        refreshControl.addTarget(self, action: #selector(pullToRefresh(sender:)), for: .valueChanged)
+        
         table.delegate = self
         table.dataSource = self
+        table.refreshControl = refreshControl
+        table.refreshControl?.tintColor = .white
         
+        fetchData()
+    }
+    
+    @objc func pullToRefresh(sender: UIRefreshControl) {
+        fetchData()
+    }
+    
+    private func fetchData() {
         viewModel.fetchCurrentWeatherInfo {
             let error = self.viewModel.getError()
             if error == nil {
@@ -37,6 +51,7 @@ class HomeViewController: BaseViewController,
     private func updateUI() {
         DispatchQueue.main.async {
             self.table.reloadData()
+            self.table.refreshControl?.endRefreshing()
         }
     }
     

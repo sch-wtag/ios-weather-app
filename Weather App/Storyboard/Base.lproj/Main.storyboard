@@ -29,19 +29,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="8Ge-sV-PQe">
+                                <rect key="frame" x="186" y="651" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Aja-Qf-tde" secondAttribute="trailing" constant="51" id="2eC-H3-BU8"/>
+                            <constraint firstItem="8Ge-sV-PQe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="186" id="2wu-ul-POm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Fts-y0-C1e" secondAttribute="trailing" id="7to-q7-0g0"/>
                             <constraint firstItem="Aja-Qf-tde" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="262" id="9hV-Sh-s0R"/>
                             <constraint firstItem="Fts-y0-C1e" firstAttribute="top" secondItem="Aja-Qf-tde" secondAttribute="bottom" constant="4" id="Jd6-HS-ali"/>
                             <constraint firstItem="Fts-y0-C1e" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="RmY-sE-l2P"/>
                             <constraint firstItem="Aja-Qf-tde" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="51" id="Sm7-eq-M4r"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8Ge-sV-PQe" secondAttribute="bottom" constant="147" id="XvG-XY-OaR"/>
+                            <constraint firstItem="8Ge-sV-PQe" firstAttribute="top" secondItem="Fts-y0-C1e" secondAttribute="bottom" constant="88.670000000000002" id="v9s-Bk-nFn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8Ge-sV-PQe" secondAttribute="trailing" constant="187" id="yVq-N2-wZz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bUc-iZ-Haj"/>
+                    <connections>
+                        <outlet property="indicator" destination="8Ge-sV-PQe" id="hqx-iw-jYE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

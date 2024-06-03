@@ -9,7 +9,6 @@ import Foundation
 
 class HomeViewModel {
     private let service = WeatherNetworkService()
-    private let locationManager = LocationManager.instance
     
     private var response: WeatherResponse? = nil
     func getResponse() -> WeatherResponse? {
@@ -24,24 +23,25 @@ class HomeViewModel {
     func fetchCurrentWeatherInfo(
         completionHandler:@escaping ()->Void
     ) {
-        locationManager.accessCurrentLocation() { lat, long in
-            if lat != "" && long != "" {
-                let url = URLBuilder()
-                    .setLatLong(lat: lat, long: long)
-                    .build()
-                
-                self.service.fetchCurrentWeatherInfo(url: url) { (response, error) in
-                    if (error != nil) {
-                        self.response = nil
-                        self.error = error
-                    } else {
-                        self.response = response
-                        self.error = nil
-                    }
-                    completionHandler()
+        let lat = UserDefaults.standard.string(forKey: StringConstants.locationLatitude)
+        let long = UserDefaults.standard.string(forKey: StringConstants.locationLongitude)
+        
+        if lat==nil || long==nil {
+            self.error = "Error fetching user's location"
+        } else {
+            let url = URLBuilder()
+                .setLatLong(lat: lat!, long: long!)
+                .build()
+            
+            self.service.fetchCurrentWeatherInfo(url: url) { (response, error) in
+                if (error != nil) {
+                    self.response = nil
+                    self.error = error
+                } else {
+                    self.response = response
+                    self.error = nil
                 }
-            } else {
-                self.error = "Error fetching user's location"
+                completionHandler()
             }
         }
     }

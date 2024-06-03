@@ -9,13 +9,27 @@ import UIKit
 
 class ViewController: BaseViewController {
     
+    private let locationManager = LocationManager.instance
+    
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        DispatchQueue.main.asyncAfter(
-            deadline: DispatchTime.now() + Constants.splashAnimationTime
-        ) {
-            self.navigateToHomeScreen()
+        indicator.color = .white
+        indicator.style = .medium
+        indicator.startAnimating()
+        
+        locationManager.accessCurrentLocation { lat, long in
+            UserDefaults.standard.setValue(lat, forKey: StringConstants.locationLatitude)
+            UserDefaults.standard.setValue(long, forKey: StringConstants.locationLongitude)
+            UserDefaults.standard.synchronize()
+            DispatchQueue.main.asyncAfter(
+                deadline: DispatchTime.now() + Constants.splashAnimationTime
+            ) {
+                self.indicator.stopAnimating()
+                self.navigateToHomeScreen()
+            }
         }
     }
     
