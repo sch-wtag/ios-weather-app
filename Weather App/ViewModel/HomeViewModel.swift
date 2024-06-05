@@ -11,7 +11,7 @@ class HomeViewModel {
     private let service = WeatherNetworkService()
     
     private var response: WeatherResponse? = nil
-    func getResponse() -> WeatherResponse? {
+    func getWeatherResponse() -> WeatherResponse? {
         return response
     }
     
@@ -20,9 +20,9 @@ class HomeViewModel {
         return error
     }
     
-    func fetchCurrentWeatherInfo(
-        completionHandler:@escaping ()->Void
-    ) {
+    var delegate: HomeViewModelDelegate!
+    
+    func fetchCurrentWeatherInfo() {
         let lat = UserDefaults.standard.string(forKey: StringConstants.locationLatitude)
         let long = UserDefaults.standard.string(forKey: StringConstants.locationLongitude)
         
@@ -37,12 +37,18 @@ class HomeViewModel {
                 if (error != nil) {
                     self.response = nil
                     self.error = error
+                    self.delegate.showError()
                 } else {
                     self.response = response
                     self.error = nil
+                    self.delegate.updateUI()
                 }
-                completionHandler()
             }
         }
     }
+}
+
+protocol HomeViewModelDelegate {
+    func updateUI()
+    func showError()
 }

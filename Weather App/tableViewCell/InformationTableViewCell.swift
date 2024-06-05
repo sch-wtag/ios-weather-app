@@ -11,6 +11,12 @@ class InformationTableViewCell: UITableViewCell {
     
     static let cellName = "InformationTableViewCell"
     
+    var viewModel: InformationTableViewCellViewModel? {
+        didSet {
+            self.updateCellUI()
+        }
+    }
+    
     static func nib() -> UINib {
         return UINib(nibName: cellName, bundle: nil)
     }
@@ -32,17 +38,13 @@ class InformationTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    public func updateData(
-        airSpeed: String,
-        airPressure: String,
-        humidity: String,
-        sunrise: String,
-        sunset: String
-    ) {
-        self.airSpeed.text = "\(airSpeed) (Air speed)"
-        self.airPressure.text = "\(airPressure) (Air pressure)"
-        self.humidity.text = "\(humidity) (Humidity)"
-        self.seaLevel.text = "\(sunrise) (sunrise)"
-        self.groundLevel.text = "\(sunset) (sunset)"
+    public func updateCellUI() {
+        let result = viewModel?.weatherData
+        
+        self.airSpeed.text = "\(result?.wind?.speed ?? 0) (Air speed)"
+        self.airPressure.text = "\(result?.main?.pressure ?? 0) (Air pressure)"
+        self.humidity.text = "\(result?.main?.humidity ?? 0) (Humidity)"
+        self.seaLevel.text = "\(DateTimeHelper.convertToDateTimeFromTimeStamp(timeStamp: result?.sys?.sunrise ?? 0)) (sunrise)"
+        self.groundLevel.text = "\(DateTimeHelper.convertToDateTimeFromTimeStamp(timeStamp: result?.sys?.sunset ?? 0)) (sunset)"
     }
 }

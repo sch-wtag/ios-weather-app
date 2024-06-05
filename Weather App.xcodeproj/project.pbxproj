@@ -18,6 +18,8 @@
 		012D670D2BFC536000FD302B /* Weather_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012D670C2BFC536000FD302B /* Weather_AppUITestsLaunchTests.swift */; };
 		012D671B2BFC546100FD302B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012D671A2BFC546000FD302B /* Constants.swift */; };
 		015626F12C106340007C8446 /* DateTimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015626F02C106340007C8446 /* DateTimeHelper.swift */; };
+		015626F32C1073EC007C8446 /* TemperatureTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015626F22C1073EC007C8446 /* TemperatureTableViewCellViewModel.swift */; };
+		015626F52C107849007C8446 /* InformationTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015626F42C107849007C8446 /* InformationTableViewCellViewModel.swift */; };
 		015DE1EF2BFCC4A90075226C /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015DE1EE2BFCC4A90075226C /* ColorExtension.swift */; };
 		015DE1F12BFCC5E70075226C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015DE1F02BFCC5E70075226C /* BaseViewController.swift */; };
 		015DE1F32BFCCA450075226C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015DE1F22BFCCA450075226C /* Colors.swift */; };
@@ -76,6 +78,8 @@
 		012D670C2BFC536000FD302B /* Weather_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		012D671A2BFC546000FD302B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		015626F02C106340007C8446 /* DateTimeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeHelper.swift; sourceTree = "<group>"; };
+		015626F22C1073EC007C8446 /* TemperatureTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		015626F42C107849007C8446 /* InformationTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		015DE1EE2BFCC4A90075226C /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		015DE1F02BFCC5E70075226C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		015DE1F22BFCCA450075226C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -220,6 +224,8 @@
 			isa = PBXGroup;
 			children = (
 				017686D52BFDB03E00E894BF /* HomeViewModel.swift */,
+				015626F22C1073EC007C8446 /* TemperatureTableViewCellViewModel.swift */,
+				015626F42C107849007C8446 /* InformationTableViewCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -429,12 +435,14 @@
 				012D671B2BFC546100FD302B /* Constants.swift in Sources */,
 				015DE1EF2BFCC4A90075226C /* ColorExtension.swift in Sources */,
 				015DE1F12BFCC5E70075226C /* BaseViewController.swift in Sources */,
+				015626F32C1073EC007C8446 /* TemperatureTableViewCellViewModel.swift in Sources */,
 				0162058B2C05CC23004467F4 /* TemperatureTableViewCell.swift in Sources */,
 				017686E72BFDB3DF00E894BF /* Clouds.swift in Sources */,
 				016205942C060CC0004467F4 /* NumberFormatter.swift in Sources */,
 				017686E22BFDB3DF00E894BF /* Coord.swift in Sources */,
 				017686E92BFDC70400E894BF /* LocationManager.swift in Sources */,
 				017686E52BFDB3DF00E894BF /* WeatherResponse.swift in Sources */,
+				015626F52C107849007C8446 /* InformationTableViewCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

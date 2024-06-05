@@ -18,6 +18,8 @@ class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel.delegate = self
+        
         setupTable()
         
         fetchData()
@@ -40,21 +42,7 @@ class HomeViewController: BaseViewController {
     }
     
     private func fetchData() {
-        viewModel.fetchCurrentWeatherInfo {
-            let error = self.viewModel.getError()
-            if error == nil {
-                self.updateUI()
-            } else {
-                print(error!)
-            }
-        }
-    }
-    
-    private func updateUI() {
-        DispatchQueue.main.async {
-            self.table.reloadData()
-            self.table.refreshControl?.endRefreshing()
-        }
+        viewModel.fetchCurrentWeatherInfo()
     }
 }
 
@@ -72,28 +60,13 @@ extension HomeViewController: UITableViewDelegate,
         switch (indexPath.row) {
         case TableCell.TemperatureCell.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: TemperatureTableViewCell.cellName, for: indexPath) as! TemperatureTableViewCell
-            let result = viewModel.getResponse()
-            cell.updateData(
-                coordinates: "\((result?.coord?.lat ?? 0.0).rounded(toPlaces: 3)), \((result?.coord?.lon ?? 0.0).rounded(toPlaces: 3))",
-                location: "\(result?.sys?.country ?? "")",
-                image: "\(Constants.IMAGE_BASE_URL)\(result?.weather?.last?.icon ?? "")@2x.png",
-                description: result?.weather?.last?.description ?? "",
-                temperature: "\((result?.main?.temp ?? 0.0).toCelciusFormat())",
-                feelsLikeTemp: "\((result?.main?.feels_like ?? 0.0).toCelciusFormat())",
-                minTemp: "\((result?.main?.temp_min ?? 0.0).toCelciusFormat())",
-                maxTemp: "\((result?.main?.temp_max ?? 0.0).toCelciusFormat())"
-            )
+            let cellViewModel = TemperatureTableViewCellViewModel(weatherData: viewModel.getWeatherResponse())
+            cell.viewModel = cellViewModel
             return cell
         case TableCell.InformationCell.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: InformationTableViewCell.cellName, for: indexPath) as! InformationTableViewCell
-            let result = viewModel.getResponse()
-            cell.updateData(
-                airSpeed: "\(result?.wind?.speed ?? 0)",
-                airPressure: "\(result?.main?.pressure ?? 0)",
-                humidity: "\(result?.main?.humidity ?? 0)",
-                sunrise: "\(DateTimeHelper.convertToDateTimeFromTimeStamp(timeStamp: result?.sys?.sunrise ?? 0))",
-                sunset: "\(DateTimeHelper.convertToDateTimeFromTimeStamp(timeStamp: result?.sys?.sunset ?? 0))"
-            )
+            let cellViewModel = InformationTableViewCellViewModel(weatherData: viewModel.getWeatherResponse())
+            cell.viewModel = cellViewModel
             return cell
         default:
             return UITableViewCell()
@@ -107,5 +80,18 @@ extension HomeViewController: UITableViewDelegate,
     enum TableCell: Int {
         case TemperatureCell = 0
         case InformationCell = 1
+    }
+}
+
+extension HomeViewController: HomeViewModelDelegate {
+    func updateUI() {
+        DispatchQueue.main.async {
+            self.table.reloadData()
+            self.table.refreshControl?.endRefreshing()
+        }
+    }
+    
+    func showError() {
+        print(viewModel.getError())
     }
 }
