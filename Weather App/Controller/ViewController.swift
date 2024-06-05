@@ -9,18 +9,24 @@ import UIKit
 
 class ViewController: BaseViewController {
     
-    private let locationManager = LocationManager.instance
-    
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setIndicatorStyle()
+        
+        accessLocation()
+    }
+    
+    private func setIndicatorStyle() {
         indicator.color = .white
         indicator.style = .medium
         indicator.startAnimating()
-        
-        locationManager.accessCurrentLocation { lat, long in
+    }
+    
+    private func accessLocation() {
+        LocationManager.instance.accessCurrentLocation { lat, long in
             UserDefaults.standard.setValue(lat, forKey: StringConstants.locationLatitude)
             UserDefaults.standard.setValue(long, forKey: StringConstants.locationLongitude)
             UserDefaults.standard.synchronize()

@@ -18,6 +18,12 @@ class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupTable()
+        
+        fetchData()
+    }
+    
+    private func setupTable() {
         table.register(TemperatureTableViewCell.nib(), forCellReuseIdentifier: TemperatureTableViewCell.cellName)
         table.register(InformationTableViewCell.nib(), forCellReuseIdentifier: InformationTableViewCell.cellName)
         
@@ -27,8 +33,6 @@ class HomeViewController: BaseViewController {
         table.dataSource = self
         table.refreshControl = refreshControl
         table.refreshControl?.tintColor = .white
-        
-        fetchData()
     }
     
     @objc func pullToRefresh(sender: UIRefreshControl) {
@@ -66,7 +70,7 @@ extension HomeViewController: UITableViewDelegate,
     
     func showTableCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         switch (indexPath.row) {
-        case 0:
+        case TableCell.TemperatureCell.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: TemperatureTableViewCell.cellName, for: indexPath) as! TemperatureTableViewCell
             let result = viewModel.getResponse()
             cell.updateData(
@@ -80,7 +84,7 @@ extension HomeViewController: UITableViewDelegate,
                 maxTemp: "\((result?.main?.temp_max ?? 0.0).toCelciusFormat())"
             )
             return cell
-        case 1:
+        case TableCell.InformationCell.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: InformationTableViewCell.cellName, for: indexPath) as! InformationTableViewCell
             let result = viewModel.getResponse()
             cell.updateData(
@@ -98,5 +102,10 @@ extension HomeViewController: UITableViewDelegate,
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    enum TableCell: Int {
+        case TemperatureCell = 0
+        case InformationCell = 1
     }
 }
