@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="Weather_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weather_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Aja-Qf-tde">
+                                <rect key="frame" x="51" y="321" width="291" height="211"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="291" id="P0G-Cs-U9B"/>
+                                    <constraint firstAttribute="height" constant="211" id="iyT-lE-EDi"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fts-y0-C1e">
+                                <rect key="frame" x="0.0" y="536" width="393" height="26.333333333333371"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="8Ge-sV-PQe">
+                                <rect key="frame" x="186" y="651" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Aja-Qf-tde" secondAttribute="trailing" constant="51" id="2eC-H3-BU8"/>
+                            <constraint firstItem="8Ge-sV-PQe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="186" id="2wu-ul-POm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Fts-y0-C1e" secondAttribute="trailing" id="7to-q7-0g0"/>
+                            <constraint firstItem="Aja-Qf-tde" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="262" id="9hV-Sh-s0R"/>
+                            <constraint firstItem="Fts-y0-C1e" firstAttribute="top" secondItem="Aja-Qf-tde" secondAttribute="bottom" constant="4" id="Jd6-HS-ali"/>
+                            <constraint firstItem="Fts-y0-C1e" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="RmY-sE-l2P"/>
+                            <constraint firstItem="Aja-Qf-tde" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="51" id="Sm7-eq-M4r"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8Ge-sV-PQe" secondAttribute="bottom" constant="147" id="XvG-XY-OaR"/>
+                            <constraint firstItem="8Ge-sV-PQe" firstAttribute="top" secondItem="Fts-y0-C1e" secondAttribute="bottom" constant="88.670000000000002" id="v9s-Bk-nFn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8Ge-sV-PQe" secondAttribute="trailing" constant="187" id="yVq-N2-wZz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="bUc-iZ-Haj"/>
+                    <connections>
+                        <outlet property="indicator" destination="8Ge-sV-PQe" id="hqx-iw-jYE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="941.22137404580144" y="-27.464788732394368"/>
+        </scene>
+        <!--HomeViewController-->
+        <scene sceneID="aWc-nl-q4e">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="HomeViewController" storyboardName="Home" referencedIdentifier="HomeViewController" id="v4L-FZ-zpN" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0CY-v1-i1G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1769" y="-27"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="weather_icon" width="512" height="512"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
