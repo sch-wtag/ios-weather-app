@@ -7,9 +7,7 @@
 
 import UIKit
 
-class HomeViewController: BaseViewController,
-                          UITableViewDelegate,
-                          UITableViewDataSource {
+class HomeViewController: BaseViewController {
     
     private let viewModel = HomeViewModel()
     
@@ -54,7 +52,10 @@ class HomeViewController: BaseViewController,
             self.table.refreshControl?.endRefreshing()
         }
     }
-    
+}
+
+extension HomeViewController: UITableViewDelegate,
+                              UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
@@ -86,8 +87,8 @@ class HomeViewController: BaseViewController,
                 airSpeed: "\(result?.wind?.speed ?? 0)",
                 airPressure: "\(result?.main?.pressure ?? 0)",
                 humidity: "\(result?.main?.humidity ?? 0)",
-                sunrise: "\(convertToDateTime(timeStamp: result?.sys?.sunrise ?? 0))",
-                sunset: "\(convertToDateTime(timeStamp: result?.sys?.sunset ?? 0))"
+                sunrise: "\(DateTimeHelper.convertToDateTimeFromTimeStamp(timeStamp: result?.sys?.sunrise ?? 0))",
+                sunset: "\(DateTimeHelper.convertToDateTimeFromTimeStamp(timeStamp: result?.sys?.sunset ?? 0))"
             )
             return cell
         default:
@@ -97,15 +98,5 @@ class HomeViewController: BaseViewController,
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
-    }
-    
-    func convertToDateTime(timeStamp: Int) -> String {
-        let date = Date(timeIntervalSince1970: Double(timeStamp))
-        let dateFormatter = DateFormatter()
-        let timeZone = TimeZone.current.abbreviation() ?? "BST"
-        dateFormatter.timeZone = TimeZone(abbreviation: timeZone)
-        dateFormatter.locale = NSLocale.current
-        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
-        return dateFormatter.string(from: date)
     }
 }
