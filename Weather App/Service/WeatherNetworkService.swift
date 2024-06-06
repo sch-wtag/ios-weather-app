@@ -7,7 +7,12 @@
 
 import Foundation
 
-class WeatherNetworkService {
+class WeatherNetworkService: WeatherService {
+    
+    static let instance = WeatherNetworkService()
+    
+    private init() {}
+    
     func fetchCurrentWeatherInfo(
         url: String,
         completionHandler:@escaping (WeatherResponse?, String?) -> Void

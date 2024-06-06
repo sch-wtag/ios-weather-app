@@ -8,7 +8,12 @@
 import Foundation
 
 class HomeViewModel {
-    private let service = WeatherNetworkService()
+    
+    private let service: WeatherService?
+    
+    init(service: WeatherService) {
+        self.service = service
+    }
     
     private var response: WeatherResponse? = nil
     func getWeatherResponse() -> WeatherResponse? {
@@ -33,7 +38,7 @@ class HomeViewModel {
                 .setLatLong(lat: lat!, long: long!)
                 .build()
             
-            self.service.fetchCurrentWeatherInfo(url: url) { (response, error) in
+            self.service?.fetchCurrentWeatherInfo(url: url) { (response, error) in
                 if (error != nil) {
                     self.response = nil
                     self.error = error

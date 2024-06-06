@@ -43,6 +43,7 @@
 		017686E72BFDB3DF00E894BF /* Clouds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017686E02BFDB3DF00E894BF /* Clouds.swift */; };
 		017686E92BFDC70400E894BF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017686E82BFDC70400E894BF /* LocationManager.swift */; };
 		017686EC2BFDCFA200E894BF /* URLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017686EB2BFDCFA200E894BF /* URLBuilder.swift */; };
+		0188CC072C0DEB69007992F3 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0188CC062C0DEB69007992F3 /* WeatherService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		017686E02BFDB3DF00E894BF /* Clouds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clouds.swift; sourceTree = "<group>"; };
 		017686E82BFDC70400E894BF /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		017686EB2BFDCFA200E894BF /* URLBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBuilder.swift; sourceTree = "<group>"; };
+		0188CC062C0DEB69007992F3 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		01CC24C52C0C792E00FC23CE /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -235,6 +237,7 @@
 			children = (
 				017686D72BFDB1DD00E894BF /* WeatherNetworkService.swift */,
 				017686E82BFDC70400E894BF /* LocationManager.swift */,
+				0188CC062C0DEB69007992F3 /* WeatherService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				015626F32C1073EC007C8446 /* TemperatureTableViewCellViewModel.swift in Sources */,
 				0162058B2C05CC23004467F4 /* TemperatureTableViewCell.swift in Sources */,
 				017686E72BFDB3DF00E894BF /* Clouds.swift in Sources */,
+				0188CC072C0DEB69007992F3 /* WeatherService.swift in Sources */,
 				016205942C060CC0004467F4 /* NumberFormatter.swift in Sources */,
 				017686E22BFDB3DF00E894BF /* Coord.swift in Sources */,
 				017686E92BFDC70400E894BF /* LocationManager.swift in Sources */,

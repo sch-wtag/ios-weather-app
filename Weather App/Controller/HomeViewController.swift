@@ -9,7 +9,7 @@ import UIKit
 
 class HomeViewController: BaseViewController {
     
-    private let viewModel = HomeViewModel()
+    private let viewModel = HomeViewModel(service: WeatherNetworkService.instance)
     
     @IBOutlet weak var table: UITableView!
     
